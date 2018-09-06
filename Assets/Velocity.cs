@@ -15,9 +15,14 @@ public class Velocity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		vectorVelocidadNeta = vectorVelocidadCorriente + vectorVelocidadBarco;
+
 		Debug.DrawLine(Vector3.zero, vectorVelocidadCorriente, Color.yellow);
 		Debug.DrawLine(Vector3.zero, vectorVelocidadBarco, Color.green);
-		vectorVelocidadNeta = vectorVelocidadCorriente + vectorVelocidadBarco;
-		transform.position += vectorVelocidadNeta * Time.deltaTime;
+		Debug.DrawLine(Vector3.zero, vectorVelocidadNeta, Color.blue);
+
+		Vector3 vectorVelocidadNetaInCentimetre = vectorVelocidadNeta / 100;
+
+		transform.position += vectorVelocidadNetaInCentimetre * Time.deltaTime;
 	}
 }
